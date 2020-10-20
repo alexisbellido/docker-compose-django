@@ -16,11 +16,12 @@ The project uses a `multi-stage build <https://docs.docker.com/develop/develop-i
 Installation
 ---------------------------------------------------------------
 
-Create a directory for static files on your host.
+Create a directory for static files on your host and grant it permissions so Docker can write to it.
 
 .. code-block:: bash
 
     $ mkdir -p ~/project-compose-dev/static
+    $ sudo chmod -R 777 ~/project-compose-dev/static
 
 Create a copy of the provided ``config.sample.yaml``, name it ``config.yaml`` and replace the values with your project's settings.
 
@@ -34,3 +35,12 @@ Change to the directory containing the Docker Compose YAML files and start the p
 
     $ cd project-compose/
     $ SSH_PRIVATE_KEY="$(cat ~/.ssh/id_rsa)" docker-compose up
+
+Log in to the app container to initialize Django's database, create a super user and collect static files.
+
+.. code-block:: bash
+
+$ docker exec -it project-compose_app_1 docker-entrypoint.sh bash
+# django-admin migrate
+# django-admin createsuperuser
+# django-admin collectstatic --no-input
