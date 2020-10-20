@@ -22,7 +22,7 @@ Create a directory for static files on your host.
 
     $ mkdir -p ~/project-compose-dev/static
 
-Create a copy of the provided `config.sample.yaml`, name it `config.yaml` and replace the values with your project's settings.
+Create a copy of the provided ``config.sample.yaml``, name it ``config.yaml`` and replace the values with your project's settings.
 
 .. code-block:: bash
 
