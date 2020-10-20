@@ -3,5 +3,6 @@
 
 .bash_history
 .DS_Store
+.vscode
 
 **/secrets/config.yaml
